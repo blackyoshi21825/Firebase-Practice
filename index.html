@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Digital Library</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <div id="main-content">
+            <div class="header-container">
+                <h1>Welcome to Mini Digital Library, <span id="user-name">User</span></h1>
+                <div class="header-buttons">
+                    <button id="view-saved-btn">My Saved Books</button>
+                    <button id="view-all-btn" style="display: none;">View All Books</button>
+                    <button id="sign-out-btn">Sign Out</button>
+                </div>
+            </div>
+
+            <div class="filter-container">
+                <div class="filter-group">
+                    <label for="genre-filter">Filter by Genre:</label>
+                    <select id="genre-filter">
+                        <option value="all">All Genres</option>
+                        <!-- Genre options will be added dynamically -->
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="year-filter">Filter by Year:</label>
+                    <input type="number" id="year-filter" placeholder="Enter year" min="-1000" max="2030">
+                    <button id="apply-year-filter">Apply</button>
+                    <button id="clear-year-filter">Clear</button>
+                </div>
+            </div>
+
+            <div id="books-container" class="books-grid">
+                <!-- Books will be displayed here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js" type="module"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js" type="module"></script>
+    <script src="script.js" type="module"></script>
+</body>
+</html>
