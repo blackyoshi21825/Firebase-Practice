@@ -357,7 +357,7 @@ const booksData = [
     year: 1606,
     genre: "Tragedy",
     description: "A Scottish general's ambition leads him to commit regicide.",
-    buyLink: "https://www.amazon.com/Macbeth-Folger-Shakespeare-Library-William/dp/"
+    buyLink: "https://www.amazon.com/Macbeth-William-Shakespeare/dp/1514630583"
   }
 ];
 
