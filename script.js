@@ -565,15 +565,15 @@
         
         bookCard.innerHTML = `
           <div class="book-info">
-            <div class="genre-badge">${book.genre}</div>
-            <div class="book-title">${book.title}</div>
-            <div class="book-author">by ${book.author}</div>
-            <div class="book-year">${book.year}</div>
+            <div class="genre-badge">${savedBook.genre}</div>
+            <div class="book-title">${savedBook.title}</div>
+            <div class="book-author">by ${savedBook.author}</div>
+            <div class="book-year">${savedBook.year}</div>
           </div>
         `;
         
         // Find the full book details from our books array
-        const fullBookDetails = books.find(b => b.id === book.id);
+        const fullBookDetails = books.find(book => book.id === savedBook.bookId);
         
         // Add click event to show details
         bookCard.addEventListener('click', () => {
@@ -581,7 +581,15 @@
             showBookDetails(fullBookDetails);
           } else {
             // If we don't have full details, use what we have from Firestore
-            showBookDetails(book);
+            showBookDetails({
+              id: savedBook.bookId,
+              title: savedBook.title,
+              author: savedBook.author,
+              year: savedBook.year,
+              genre: savedBook.genre,
+              description: "Full details not available.",
+              buyLink: "#"
+            });
           }
         });
         
