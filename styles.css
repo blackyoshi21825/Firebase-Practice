@@ -568,29 +568,10 @@ button:hover {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* Logo styling for all pages */
-.logo-title-container {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 20px;
-  justify-content: center;
-}
-
-.logo {
-  height: 50px;
-  width: auto;
-}
-
 /* Adjust auth container for logo */
 #auth-container h1 {
   margin-top: 0;
   margin-bottom: 30px;
 }
 
-/* Specific styling for main page logo */
-#main-content .logo-title-container {
-  justify-content: flex-start;
-  margin-bottom: 0;
-}
 
