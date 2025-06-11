@@ -20,7 +20,6 @@
 
   // Global variables to track current filters
   let currentGenre = 'all';
-  let currentYear = null;
 
   // Function to populate genre filter
   function populateGenreFilter() {
@@ -60,18 +59,10 @@
       filteredBooks = filteredBooks.filter(book => book.genre === currentGenre);
     }
     
-    // Apply year filter if set
-    if (currentYear !== null) {
-      filteredBooks = filteredBooks.filter(book => book.year === currentYear);
-    }
-    
     if (filteredBooks.length === 0) {
       let message = 'No books found';
       if (currentGenre !== 'all') {
         message += ` in the "${currentGenre}" genre`;
-      }
-      if (currentYear !== null) {
-        message += `${currentGenre !== 'all' ? ' and' : ''} from the year ${currentYear}`;
       }
       message += '.';
       
@@ -115,43 +106,10 @@
     filterBooks();
   }
 
-  // Function to filter books by year
-  function filterBooksByYear() {
-    const yearInput = document.getElementById('year-filter');
-    const year = parseInt(yearInput.value);
-    
-    if (isNaN(year)) {
-      // If input is not a valid number, don't apply the filter
-      return;
-    }
-    
-    currentYear = year;
-    filterBooks();
-  }
-
-  // Function to clear year filter
-  function clearYearFilter() {
-    const yearInput = document.getElementById('year-filter');
-    yearInput.value = '';
-    currentYear = null;
-    filterBooks();
-  }
-
   // Function to set up all event listeners for filters
   function setupFilterListeners() {
     // Genre filter
     document.getElementById('genre-filter').addEventListener('change', filterBooksByGenre);
-    
-    // Year filter
-    document.getElementById('apply-year-filter').addEventListener('click', filterBooksByYear);
-    document.getElementById('clear-year-filter').addEventListener('click', clearYearFilter);
-    
-    // Also apply year filter when Enter key is pressed in the input
-    document.getElementById('year-filter').addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        filterBooksByYear();
-      }
-    });
   }
 
   // Function to apply genre-specific styling to badges
@@ -159,59 +117,8 @@
     const genreBadges = document.querySelectorAll('.genre-badge');
     
     genreBadges.forEach(badge => {
-      const genre = badge.textContent;
-      switch(genre) {
-        case 'Classic':
-          badge.style.background = 'linear-gradient(to right, #4776E6, #8E54E9)';
-          break;
-        case 'Dystopian':
-          badge.style.background = 'linear-gradient(to right, #f85032, #e73827)';
-          break;
-        case 'Romance':
-          badge.style.background = 'linear-gradient(to right, #FF5F6D, #FFC371)';
-          break;
-        case 'Coming-of-age':
-          badge.style.background = 'linear-gradient(to right, #56ab2f, #a8e063)';
-          break;
-        case 'Fantasy':
-          badge.style.background = 'linear-gradient(to right, #00c6ff, #0072ff)';
-          break;
-        case 'Magical Realism':
-          badge.style.background = 'linear-gradient(to right, #834d9b, #d04ed6)';
-          break;
-        case 'High Fantasy':
-          badge.style.background = 'linear-gradient(to right, #1a2980, #26d0ce)';
-          break;
-        case 'Psychological':
-          badge.style.background = 'linear-gradient(to right, #5614b0, #dbd65c)';
-          break;
-        case 'Science Fiction':
-          badge.style.background = 'linear-gradient(to right, #4389A2, #5C258D)';
-          break;
-        case 'Horror':
-          badge.style.background = 'linear-gradient(to right, #200122, #6f0000)';
-          break;
-        case 'Mystery':
-          badge.style.background = 'linear-gradient(to right, #141E30, #243B55)';
-          break;
-        case 'Thriller':
-          badge.style.background = 'linear-gradient(to right, #c31432, #240b36)';
-          break;
-        case 'Historical Fiction':
-          badge.style.background = 'linear-gradient(to right, #3A6073, #16222A)';
-          break;
-        case 'Adventure':
-          badge.style.background = 'linear-gradient(to right, #134E5E, #71B280)';
-          break;
-        case 'Young Adult':
-          badge.style.background = 'linear-gradient(to right, #F09819, #EDDE5D)';
-          break;
-        case 'Gothic':
-          badge.style.background = 'linear-gradient(to right, #333333, #dd1818)';
-          break;
-        default:
-          badge.style.background = 'linear-gradient(to right, #ff7e5f, #feb47b)';
-      }
+      // Apply the same styling to all badges
+      badge.style.background = 'linear-gradient(to right, #4776E6, #8E54E9)';
     });
   }
 
@@ -219,11 +126,9 @@
   function displayBooks() {
     // Reset filters
     currentGenre = 'all';
-    currentYear = null;
     
     // Reset filter UI
     document.getElementById('genre-filter').value = 'all';
-    document.getElementById('year-filter').value = '';
     
     // Display all books
     filterBooks();
@@ -265,28 +170,15 @@
         genreBadge.style.background = 'linear-gradient(to right, #4776E6, #8E54E9)';
         break;
       case 'Dystopian':
-        genreBadge.style.background = 'linear-gradient(to right, #f85032, #e73827)';
-        break;
       case 'Romance':
-        genreBadge.style.background = 'linear-gradient(to right, #FF5F6D, #FFC371)';
-        break;
       case 'Coming-of-age':
-        genreBadge.style.background = 'linear-gradient(to right, #56ab2f, #a8e063)';
-        break;
       case 'Fantasy':
-        genreBadge.style.background = 'linear-gradient(to right, #00c6ff, #0072ff)';
-        break;
       case 'Magical Realism':
-        genreBadge.style.background = 'linear-gradient(to right, #834d9b, #d04ed6)';
-        break;
       case 'High Fantasy':
-        genreBadge.style.background = 'linear-gradient(to right, #1a2980, #26d0ce)';
-        break;
       case 'Psychological':
-        genreBadge.style.background = 'linear-gradient(to right, #5614b0, #dbd65c)';
-        break;
       default:
-        genreBadge.style.background = 'linear-gradient(to right, #ff7e5f, #feb47b)';
+        genreBadge.style.background = 'linear-gradient(to right, #4776E6, #8E54E9)';
+        break;
     }
     
     // Save button functionality
@@ -532,18 +424,10 @@
         filteredBooks = filteredBooks.filter(book => book.genre === currentGenre);
       }
       
-      // Apply year filter if set
-      if (currentYear !== null) {
-        filteredBooks = filteredBooks.filter(book => book.year === currentYear);
-      }
-      
       if (filteredBooks.length === 0) {
         let message = 'No saved books found';
         if (currentGenre !== 'all') {
           message += ` in the "${currentGenre}" genre`;
-        }
-        if (currentYear !== null) {
-          message += `${currentGenre !== 'all' ? ' and' : ''} from the year ${currentYear}`;
         }
         message += '.';
         
