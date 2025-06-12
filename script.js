@@ -4,14 +4,14 @@
   import books from "./books.js";
 
   // Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyCoa318RgWQZV52F9Ggu0d5sXYrG4a_zn8",
-    authDomain: "mini-digital-library.firebaseapp.com",
-    projectId: "mini-digital-library",
-    storageBucket: "mini-digital-library.firebasestorage.app",
-    messagingSenderId: "877184779599",
-    appId: "1:877184779599:web:9db9d832222906f8bef13a"
-  };
+const firebaseConfig = {
+  apiKey: "AIzaSyARSa7Bs-0g55DBhi2EQvJ32BHlszCv8WY",
+  authDomain: "daily-meal-planner-f96db.firebaseapp.com",
+  projectId: "daily-meal-planner-f96db",
+  storageBucket: "daily-meal-planner-f96db.firebasestorage.app",
+  messagingSenderId: "494913060879",
+  appId: "1:494913060879:web:7c346a989ca633f33b237a"
+  }
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
